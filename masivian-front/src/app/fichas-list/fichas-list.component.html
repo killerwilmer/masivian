@@ -1,0 +1,9 @@
+<h1>Fichas</h1>
+ 
+<div *ngFor="let ficha of fichas | async" style="width: 300px;">
+  <app-ficha-details [ficha]='ficha'></app-ficha-details>
+</div>
+ 
+<div>
+  <button type="button" class="button btn-danger" (click)='deleteFichas()'>Delete All</button>
+</div>
