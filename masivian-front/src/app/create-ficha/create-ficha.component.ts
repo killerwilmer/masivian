@@ -1,3 +1,5 @@
+import { Ficha } from './../model/Ficha';
+import { FichaService } from './../ficha.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -6,10 +8,27 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./create-ficha.component.css']
 })
 export class CreateFichaComponent implements OnInit {
+  ficha: Ficha = new Ficha();
+  submitted = false;
 
-  constructor() { }
+  constructor(private fichaService: FichaService) {}
 
-  ngOnInit() {
+  ngOnInit() {}
+
+  newCustomer(): void {
+    this.submitted = false;
+    this.ficha = new Ficha();
   }
 
+  save() {
+    this.fichaService
+      .createFicha(this.ficha)
+      .subscribe(data => console.log(data), error => console.log(error));
+    this.ficha = new Ficha();
+  }
+
+  onSubmit() {
+    this.submitted = true;
+    this.save();
+  }
 }

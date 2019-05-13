@@ -1,4 +1,4 @@
-enum Area {
+export const enum Area {
     Tecnología,
     Verticales,
     Comercial,
